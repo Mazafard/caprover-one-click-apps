@@ -10,14 +10,15 @@
 -   Under **3rd party repositories:** copy `https://mazafard.github.io/caprover-one-click-apps` and paste it in to the text box
 -   Click the **_Connect New Repository_** button
 
----------
+---
 
 To create your own repository:
-- Fork this repository
-- Delete all existing apps (to avoid duplicate apps), and add your own apps.
-- Run `npm install -g pnpm` or `sudo npm install -g pnpm`
-- Run `pnpm i`
-- Run `pnpm run validate_apps`
-- Run `pnpm run formatter-write`
-- Run `pnpm run build` 
-- Now you can host the static content placed in `./dist` directory anywhere you want, the official repo uses github pages to publish the content. Make sure to update [CNAME](https://github.com/Awes0meHub/caprover-one-click-apps/blob/master/public/CNAME) to your own URL if you decide to do so.
+
+-   Fork this repository
+-   Delete all existing apps (to avoid duplicate apps), and add your own apps.
+-   Run `npm install -g pnpm` or `sudo npm install -g pnpm`
+-   Run `pnpm i`
+-   Run `pnpm run validate_apps`
+-   Run `pnpm run formatter-write`
+-   Run `pnpm run build`
+-   Now you can host the static content placed in `./dist` directory anywhere you want, the official repo uses github pages to publish the content. Make sure to update [CNAME](https://github.com/Awes0meHub/caprover-one-click-apps/blob/master/public/CNAME) to your own URL if you decide to do so.

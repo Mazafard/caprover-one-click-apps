@@ -1,39 +1,35 @@
 captainVersion: 4
 
 services:
-  $$cap_appname:
-    volumes:
-      - $$cap_appname-db-data:/data/db
-      - $$cap_appname-db-config:/data/configdb
-    restart: always
+    $$cap_appname:
+        volumes:
+            - $$cap_appname-db-data:/data/db
+            - $$cap_appname-db-config:/data/configdb
+        restart: always
 
-    caproverExtra:
-      notExposeAsWebApp: 'true'
-      dockerfileLines:
-        - FROM mongo:$$cap_mongo_version
-        - CMD ["mongod", "--replSet=rs0" ]
-
-
-
+        caproverExtra:
+            notExposeAsWebApp: 'true'
+            dockerfileLines:
+                - FROM mongo:$$cap_mongo_version
+                - CMD ["mongod", "--replSet=rs0" ]
 
 caproverOneClickApp:
-  variables:
-    - id: $$cap_mongo_version
-      label: MongoDB Version
-      defaultValue: 'latest'
-      description: Check out their Docker page for the valid tags https://hub.docker.com/r/library/mongo/tags/
-      validRegex: /^([^\s^\/])+$/
+    variables:
+        - id: $$cap_mongo_version
+          label: MongoDB Version
+          defaultValue: 'latest'
+          description: Check out their Docker page for the valid tags https://hub.docker.com/r/library/mongo/tags/
+          validRegex: /^([^\s^\/])+$/
 
-  instructions:
-    start: >-
-      MongoDB is a cross-platform document-oriented database. Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemas. 
-      
-      After installation on CapRover, it will be available as srv-captain--YOUR_CONTAINER_NAME at port 27017 to other CapRover apps.
-      
-      Enter your MongoDB Configuration parameters and click on next. It will take about a minute for the process to finish.
-    end: "MongoDB is deployed and available as srv-captain--$$cap_appname:27017 to other apps. For example with NodeJS: mongoose.connect('mongodb://srv-captain--$$cap_appname/mydatabase?authSource=admin', {userMongoClient: true});"
-  displayName: MongoDB with oplog
-  isOfficial: true
-  description: MongoDB with oplog is a cross-platform document-oriented database program. Classified as a NoSQL database program with oplog
-  documentation: Taken from https://hub.docker.com/r/mongo/
+    instructions:
+        start: >-
+            MongoDB is a cross-platform document-oriented database. Classified as a NoSQL database program, MongoDB uses JSON-like documents with schemas. 
 
+            After installation on CapRover, it will be available as srv-captain--YOUR_CONTAINER_NAME at port 27017 to other CapRover apps.
+
+            Enter your MongoDB Configuration parameters and click on next. It will take about a minute for the process to finish.
+        end: "MongoDB is deployed and available as srv-captain--$$cap_appname:27017 to other apps. For example with NodeJS: mongoose.connect('mongodb://srv-captain--$$cap_appname/mydatabase?authSource=admin', {userMongoClient: true});"
+    displayName: MongoDB with oplog
+    isOfficial: true
+    description: MongoDB with oplog is a cross-platform document-oriented database program. Classified as a NoSQL database program with oplog
+    documentation: Taken from https://hub.docker.com/r/mongo/
